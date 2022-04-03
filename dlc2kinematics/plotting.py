@@ -106,6 +106,32 @@ def plot_joint_angles(joint_angle, angles=[None], start=None, end=None):
     plt.title("Joint Angles", loc="left")
     plt.legend(loc="center left", bbox_to_anchor=(1, 0.5))
     plt.show()
+    
+    def plot_joint_velocity(joint_velocity, angles=[None], start=None, end=None):
+
+
+        try:
+            joint_velocity = pd.read_hdf(joint_velocity, "df_with_missing")
+        except:
+            pass
+        if start == None:
+            start = 0
+        if end == None:
+            end = len(joint_velocity)
+
+        if velocity[0] == None:
+            velocity = list(joint_velocity.columns.get_level_values(0))
+
+        ax = joint_velocity[velocity][start:end].plot(kind="line")
+        #    plt.tight_layout()
+        plt.ylim([0, 50])
+        plt.xlabel("Frame numbers")
+        plt.ylabel("Joint angular velocity in rad/s")
+        ax.spines["right"].set_visible(False)
+        ax.spines["top"].set_visible(False)
+        plt.title("Joint angular velocity", loc="left")
+        plt.legend(loc="center left", bbox_to_anchor=(1, 0.5))
+        plt.show()
 
 
 def visualize_synergies(data_reconstructed):
