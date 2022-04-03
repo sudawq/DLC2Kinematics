@@ -15,6 +15,7 @@ from dlc2kinematics.mainfxns import (
 )
 from dlc2kinematics.plotting import (
     plot_joint_angles,
+    plot_joint_velocity,
     plot_velocity,
     pca_plot,
     plot_3d_pca_reconstruction,
@@ -43,6 +44,7 @@ from dlc2kinematics.quaternions import (
 try:
     from dlc2kinematics.plotting import (
         plot_joint_angles,
+        plot_joint_velocity,
         plot_velocity,
         pca_plot,
         plot_3d_pca_reconstruction,
